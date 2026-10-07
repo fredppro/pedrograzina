@@ -42,24 +42,6 @@ const ServiceIcon: React.FC<{ type: ServiceItem['iconType'] }> = ({ type }) => {
           <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
         </svg>
       );
-    case 'parts':
-      return (
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.75"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="w-6 h-6 text-[#F26A21]"
-          aria-hidden="true"
-        >
-          <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
-          <circle cx="7" cy="17" r="2" />
-          <path d="M9 17h6" />
-          <circle cx="17" cy="17" r="2" />
-        </svg>
-      );
     case 'polish':
       return (
         <svg
@@ -78,6 +60,24 @@ const ServiceIcon: React.FC<{ type: ServiceItem['iconType'] }> = ({ type }) => {
           <path d="M12 19v2" />
           <path d="M3 12h2" />
           <path d="M19 12h2" />
+        </svg>
+      );
+    case 'headlights':
+      return (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="w-6 h-6 text-[#F26A21]"
+          aria-hidden="true"
+        >
+          <path d="M11 6C6.5 6 3 8.5 3 12s3.5 6 8 6c1.4 0 2.5-1.1 2.5-2.5v-7C13.5 7.1 12.4 6 11 6Z" />
+          <path d="M17 8h4" />
+          <path d="M17 12h4" />
+          <path d="M17 16h4" />
         </svg>
       );
   }
@@ -142,7 +142,7 @@ export const Services: React.FC<ServicesProps> = ({ t }) => {
               </div>
 
               {/* Quiet Unboxed Technical Specification Footer */}
-              <div className="mt-6 pt-4 border-t border-[#D5D5D5]/10 text-xs text-[#D5D5D5]/60">
+              <div className="mt-6 pt-4 border-t border-[#D5D5D5]/10 text-xs text-[#D5D5D5]/65">
                 {service.details}
               </div>
             </article>

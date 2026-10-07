@@ -1,0 +1,10 @@
+# robots.txt for Pedro Grazina — Pintura Automóvel & Reparação de Carroçarias
+User-agent: *
+Allow: /
+
+# Disallow private or build-only paths if ever exposed
+Disallow: /api/
+Disallow: /.git/
+
+# XML Sitemaps
+Sitemap: https://pedrograzina.pt/sitemap.xml

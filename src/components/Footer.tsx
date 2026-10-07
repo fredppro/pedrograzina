@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, Instagram, MessageCircle } from 'lucide-react';
+import { Phone, Mail, Instagram, MessageCircle, MapPin } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 import { CONTACT_INFO, Language, Translations } from '../i18n/translations';
 
@@ -24,9 +24,9 @@ export const Footer: React.FC<FooterProps> = ({ lang, setLang, t }) => {
   return (
     <footer className="bg-[#0B0B0B] border-t border-[#D5D5D5]/12 py-12 lg:py-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 pb-8 border-b border-[#D5D5D5]/10">
-          {/* Brand Logo + Name */}
-          <div className="space-y-2">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-8 border-b border-[#D5D5D5]/10">
+          {/* Brand Logo + Tagline + Address */}
+          <div className="space-y-2.5">
             <a
               href="#hero"
               onClick={(e) => {
@@ -37,9 +37,18 @@ export const Footer: React.FC<FooterProps> = ({ lang, setLang, t }) => {
             >
               <BrandLogo size="sm" />
             </a>
-            <p className="text-xs sm:text-sm text-[#D5D5D5]/65 max-w-md">
+            <p className="text-xs sm:text-sm text-[#D5D5D5]/70 max-w-md">
               {t.footer.tagline}
             </p>
+            <a
+              href={CONTACT_INFO.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs text-[#D5D5D5]/65 hover:text-[#F26A21] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F26A21] rounded"
+            >
+              <MapPin className="w-3.5 h-3.5 text-[#F26A21] shrink-0" />
+              <span>{CONTACT_INFO.fullAddress}</span>
+            </a>
           </div>
 
           {/* Primary Contacts & Social Links */}

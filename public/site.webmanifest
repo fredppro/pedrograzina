@@ -1,0 +1,19 @@
+{
+  "name": "Pedro Grazina — Pintura Automóvel & Reparação de Sinistros em Leiria",
+  "short_name": "Pedro Grazina",
+  "description": "Oficina em Leiria (Zicofa) especializada em reparações de sinistros, pintura personalizada, polimentos gerais e recuperação de faróis com garantia de 2 anos. Material certificado SIKKENS.",
+  "lang": "pt-PT",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0B0B0B",
+  "theme_color": "#0B0B0B",
+  "icons": [
+    {
+      "src": "./logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

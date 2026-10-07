@@ -241,6 +241,11 @@ export const HeroBackgroundLoop: React.FC<HeroBackgroundLoopProps> = ({
               <img
                 src={frame.src}
                 alt={frame.alt}
+                width={1280}
+                height={720}
+                loading={index === 0 ? 'eager' : 'lazy'}
+                fetchPriority={index === 0 ? 'high' : 'low'}
+                decoding="async"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover object-[70%_center] sm:object-right filter contrast-[1.06] brightness-[0.92]"
               />

@@ -145,6 +145,10 @@ export const Gallery: React.FC<GalleryProps> = ({ t }) => {
                       <img
                         src={item.imageUrl}
                         alt={item.alt}
+                        width={1280}
+                        height={800}
+                        loading="lazy"
+                        decoding="async"
                         referrerPolicy="no-referrer"
                         onError={() =>
                           setFailedImages((prev) => ({ ...prev, [item.id]: true }))
@@ -255,6 +259,9 @@ export const Gallery: React.FC<GalleryProps> = ({ t }) => {
               <img
                 src={currentLightboxItem.imageUrl}
                 alt={currentLightboxItem.alt}
+                width={1280}
+                height={800}
+                decoding="async"
                 referrerPolicy="no-referrer"
                 className="w-full max-h-[70vh] object-contain"
               />

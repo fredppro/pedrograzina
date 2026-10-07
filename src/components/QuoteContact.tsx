@@ -4,6 +4,7 @@ import {
   Mail,
   MessageCircle,
   Clock,
+  MapPin,
   CheckCircle2,
   AlertCircle,
   ArrowUpRight,
@@ -35,7 +36,7 @@ export const QuoteContact: React.FC<QuoteContactProps> = ({ t }) => {
     name: '',
     phone: '',
     email: '',
-    service: 'fullPaint',
+    service: 'customPaint',
     message: '',
   });
 
@@ -87,10 +88,7 @@ export const QuoteContact: React.FC<QuoteContactProps> = ({ t }) => {
     }, 350);
   };
 
-  const handleChange = (
-    field: keyof FormValues,
-    value: string
-  ) => {
+  const handleChange = (field: keyof FormValues, value: string) => {
     setValues((prev) => ({ ...prev, [field]: value }));
     if (errors[field as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [field]: undefined }));
@@ -114,7 +112,7 @@ export const QuoteContact: React.FC<QuoteContactProps> = ({ t }) => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-start">
-          {/* Left Column: Direct Contact & Value Proposition */}
+          {/* Left Column: Direct Contact & Location */}
           <div className="lg:col-span-5" id="contacto-direto">
             <div className="flex items-center gap-3 mb-3">
               <span
@@ -166,7 +164,7 @@ export const QuoteContact: React.FC<QuoteContactProps> = ({ t }) => {
               </div>
 
               {/* Direct Contact Channels List */}
-              <div className="space-y-4 pt-2">
+              <div className="space-y-3.5 pt-2">
                 {/* Phone */}
                 <a
                   href={CONTACT_INFO.phoneHref}
@@ -203,6 +201,30 @@ export const QuoteContact: React.FC<QuoteContactProps> = ({ t }) => {
                   </div>
                 </a>
 
+                {/* Workshop Address (Leiria - Zicofa) */}
+                <a
+                  href={CONTACT_INFO.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-4 p-4 rounded-xl bg-[#1C1C1C]/70 border border-[#D5D5D5]/10 hover:border-[#F26A21]/50 transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F26A21]"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-[#0B0B0B] border border-[#D5D5D5]/10 flex items-center justify-center text-[#F26A21] shrink-0">
+                    <MapPin className="w-4 h-4" />
+                  </div>
+                  <div className="flex-1">
+                    <span className="block text-xs text-[#D5D5D5]/65">
+                      {t.quote.addressLabel}
+                    </span>
+                    <address className="not-italic text-sm sm:text-[15px] font-medium text-white group-hover:text-[#F26A21] transition-colors leading-snug mt-0.5">
+                      {t.quote.addressValue}
+                    </address>
+                    <span className="mt-1.5 inline-flex items-center gap-1 text-xs font-semibold text-[#F26A21]">
+                      <span>{t.quote.directionsLabel}</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
+                </a>
+
                 {/* Working Hours */}
                 <div className="flex items-start gap-4 p-4 rounded-xl bg-[#1C1C1C]/40 border border-[#D5D5D5]/8">
                   <div className="w-10 h-10 rounded-lg bg-[#0B0B0B] border border-[#D5D5D5]/10 flex items-center justify-center text-[#D99A16] shrink-0">
@@ -212,8 +234,11 @@ export const QuoteContact: React.FC<QuoteContactProps> = ({ t }) => {
                     <span className="block text-xs text-[#D5D5D5]/65">
                       {t.quote.scheduleLabel}
                     </span>
-                    <span className="text-xs sm:text-sm text-[#D5D5D5]/90">
+                    <span className="block text-xs sm:text-sm font-medium text-white mt-0.5">
                       {t.quote.scheduleValue}
+                    </span>
+                    <span className="block text-xs text-[#D5D5D5]/60 mt-0.5">
+                      {t.quote.scheduleWeekend}
                     </span>
                   </div>
                 </div>
@@ -262,7 +287,7 @@ export const QuoteContact: React.FC<QuoteContactProps> = ({ t }) => {
                           name: '',
                           phone: '',
                           email: '',
-                          service: 'fullPaint',
+                          service: 'customPaint',
                           message: '',
                         });
                       }}
@@ -412,17 +437,17 @@ export const QuoteContact: React.FC<QuoteContactProps> = ({ t }) => {
                       onChange={(e) => handleChange('service', e.target.value)}
                       className="w-full px-4 py-3.5 rounded-lg bg-[#0B0B0B] text-white text-sm sm:text-base border border-[#D5D5D5]/18 hover:border-[#D5D5D5]/35 transition-colors focus:outline-none focus:ring-2 focus:ring-[#F26A21]"
                     >
-                      <option value="fullPaint">
-                        {t.quote.form.serviceOptions.fullPaint}
+                      <option value="customPaint">
+                        {t.quote.form.serviceOptions.customPaint}
                       </option>
-                      <option value="bodyRepair">
-                        {t.quote.form.serviceOptions.bodyRepair}
-                      </option>
-                      <option value="partsPaint">
-                        {t.quote.form.serviceOptions.partsPaint}
+                      <option value="crashRepair">
+                        {t.quote.form.serviceOptions.crashRepair}
                       </option>
                       <option value="polishing">
                         {t.quote.form.serviceOptions.polishing}
+                      </option>
+                      <option value="headlights">
+                        {t.quote.form.serviceOptions.headlights}
                       </option>
                       <option value="other">
                         {t.quote.form.serviceOptions.other}

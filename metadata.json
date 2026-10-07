@@ -1,6 +1,6 @@
 {
   "name": "Pedro Grazina — Pintura Automóvel",
-  "description": "Oficina especializada em pintura automóvel, reparação de carroçarias, pintura de peças e polimento profissional com atenção ao detalhe.",
+  "description": "Oficina em Leiria (Zicofa) especializada em reparações de sinistros, pintura personalizada, polimentos gerais e recuperação de faróis com garantia de 2 anos. Material certificado SIKKENS.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

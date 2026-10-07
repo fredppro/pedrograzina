@@ -6,7 +6,7 @@ export interface ServiceItem {
   title: string;
   description: string;
   details: string;
-  iconType: 'spray' | 'bodywork' | 'parts' | 'polish';
+  iconType: 'spray' | 'bodywork' | 'headlights' | 'polish';
 }
 
 export interface GalleryItem {
@@ -80,8 +80,12 @@ export interface Translations {
     whatsappDirectNote: string;
     phoneLabel: string;
     emailLabel: string;
+    addressLabel: string;
+    addressValue: string;
+    directionsLabel: string;
     scheduleLabel: string;
     scheduleValue: string;
+    scheduleWeekend: string;
     form: {
       nameLabel: string;
       namePlaceholder: string;
@@ -91,10 +95,10 @@ export interface Translations {
       emailPlaceholder: string;
       serviceLabel: string;
       serviceOptions: {
-        fullPaint: string;
-        bodyRepair: string;
-        partsPaint: string;
+        customPaint: string;
+        crashRepair: string;
         polishing: string;
+        headlights: string;
         other: string;
       };
       messageLabel: string;
@@ -156,11 +160,19 @@ export const CONTACT_INFO = {
   companyName: 'Pedro Grazina',
   specialty: 'Pintura Automóvel',
   phoneDisplay: '+351 911 044 842',
+  phoneShort: '911 044 842',
   phoneHref: 'tel:+351911044842',
   whatsappNumber: '351911044842',
-  email: 'contacto@pedrograzina.pt',
-  instagramUrl: 'https://instagram.com',
-  instagramHandle: '@pedrograzina.pintura',
+  email: 'pgrazina.pintura@gmail.com',
+  streetAddress: 'Rua Outeiro da Rosa nº 11 (Zona Industrial da Zicofa)',
+  locality: 'Leiria',
+  country: 'Portugal',
+  fullAddress: 'Rua Outeiro da Rosa nº 11 (Zn Industrial da Zicofa), Leiria, Portugal',
+  mapsUrl:
+    'https://www.google.com/maps/search/?api=1&query=Rua+Outeiro+da+Rosa+11+Zicofa+Leiria+Portugal',
+  instagramUrl: 'https://www.instagram.com/pgrazina.pintura/',
+  instagramHandle: '@pgrazina.pintura',
+  certifiedMaterial: 'SIKKENS',
 };
 
 export const HERO_IMAGE = IMAGE_PATHS.hero;
@@ -168,9 +180,9 @@ export const HERO_IMAGE = IMAGE_PATHS.hero;
 export const translations: Record<Language, Translations> = {
   pt: {
     meta: {
-      title: 'Pedro Grazina — Pintura Automóvel & Reparação de Carroçarias',
+      title: 'Pedro Grazina — Pintura Automóvel & Reparação de Sinistros em Leiria',
       description:
-        'Pintura automóvel e reparação de carroçarias com acabamento profissional e atenção ao detalhe em Portugal.',
+        'Oficina em Leiria (Zicofa) especializada em pintura personalizada, reparação de sinistros, polimentos gerais e recuperação de faróis com material certificado SIKKENS.',
     },
     nav: {
       services: 'Serviços',
@@ -185,59 +197,59 @@ export const translations: Record<Language, Translations> = {
       languageLabel: 'Selecionar idioma',
     },
     hero: {
-      kicker: 'PINTURA AUTOMÓVEL · REPARAÇÃO DE CARROÇARIAS',
+      kicker: 'LEIRIA · PINTURA AUTOMÓVEL & REPARAÇÃO DE SINISTROS',
       title: 'Damos uma nova vida à sua viatura.',
       subtitle:
-        'Pintura automóvel e reparação de carroçarias com acabamento profissional e atenção ao detalhe.',
+        'Pintura personalizada, reparação de sinistros, polimentos gerais e recuperação de faróis com acabamento profissional e material certificado SIKKENS.',
       ctaPrimary: 'Pedir Orçamento',
       ctaSecondary: 'Ver Trabalhos',
       trustPillars: {
-        quality: 'Afinação exata de cor',
-        precision: 'Cabine de pintura pressurizada',
-        finish: 'Acabamento de origem e rigor técnico',
+        quality: 'Material certificado SIKKENS',
+        precision: 'Recuperação de faróis (Garantia 2 anos)',
+        finish: 'Reparação de sinistros e pintura personalizada',
       },
     },
     services: {
-      kicker: 'ESPECIALIDADES TÉCNICAS',
+      kicker: 'MATERIAL CERTIFICADO SIKKENS DE QUALIDADE',
       title: 'Os nossos serviços',
       subtitle:
-        'Intervenções rigorosas em pintura e chapa, executadas com materiais de elevada durabilidade e controlo exigente em cada etapa.',
+        'Intervenções rigorosas com material certificado SIKKENS de elevada qualidade, garantindo durabilidade, brilho e precisão em cada detalhe.',
       items: [
         {
-          id: 'pintura-automovel',
+          id: 'pintura-personalizada',
           number: '01',
-          title: 'Pintura Automóvel',
+          title: 'Pintura Personalizada',
           description:
-            'Pintura completa ou parcial com acabamento profissional e correspondência de cor.',
-          details: 'Estufa controlada · Vernizes de alto sólido',
+            'Pintura automóvel completa, parcial ou personalizada com acabamento de excelência e afinação exata de cor.',
+          details: 'Material certificado SIKKENS · Estufa controlada',
           iconType: 'spray',
         },
         {
-          id: 'reparacao-carrocaria',
+          id: 'reparacoes-sinistros',
           number: '02',
-          title: 'Reparação de Carroçaria',
+          title: 'Reparações de Sinistros',
           description:
-            'Reparação de danos, amolgadelas e elementos da carroçaria.',
-          details: 'Alinhamento de painéis · Nivelamento de precisão',
+            'Recuperação completa de danos de colisão, amolgadelas e alinhamento rigoroso de elementos da carroçaria.',
+          details: 'Reparação multimarca · Rigor estrutural e estético',
           iconType: 'bodywork',
         },
         {
-          id: 'pintura-pecas',
+          id: 'polimentos-gerais',
           number: '03',
-          title: 'Pintura de Peças',
+          title: 'Polimentos Gerais',
           description:
-            'Pintura de para-choques, portas, capôs, guarda-lamas e outros componentes.',
-          details: 'Plásticos, alumínio e aço · Textura original',
-          iconType: 'parts',
+            'Tratamento e correção de verniz para eliminar riscos superficiais e devolver brilho profundo e proteção à pintura.',
+          details: 'Renovação de brilho · Acabamento espelhado',
+          iconType: 'polish',
         },
         {
-          id: 'polimento-acabamento',
+          id: 'recuperacao-afinacao-farois',
           number: '04',
-          title: 'Polimento e Acabamento',
+          title: 'Recuperação e Afinação de Faróis',
           description:
-            'Tratamento e acabamento para devolver brilho e qualidade à pintura.',
-          details: 'Correção de verniz · Proteção e profundidade ótica',
-          iconType: 'polish',
+            'Restauro completo da transparência das óticas e afinação precisa do feixe luminoso para máxima segurança e inspeção.',
+          details: 'Recuperação de faróis com garantia de 2 anos',
+          iconType: 'headlights',
         },
       ],
     },
@@ -245,11 +257,11 @@ export const translations: Record<Language, Translations> = {
       kicker: 'PORTFÓLIO & PROCESSO',
       title: 'O nosso trabalho fala por nós.',
       subtitle:
-        'Da preparação de chapa à aplicação de verniz em estufa e polimento final. Cada viatura recebe um tratamento meticuloso.',
+        'Da reparação de sinistros e preparação de carroçaria à pintura personalizada com produtos SIKKENS e polimento final.',
       filterAll: 'Todos os Trabalhos',
       filterPaint: 'Pintura & Cabine',
-      filterBodywork: 'Carroçaria',
-      filterPolish: 'Acabamento & Detalhe',
+      filterBodywork: 'Sinistros & Carroçaria',
+      filterPolish: 'Polimento & Faróis',
       viewLarger: 'Ver em detalhe',
       closeLightbox: 'Fechar visualização',
       previousImage: 'Imagem anterior',
@@ -257,60 +269,60 @@ export const translations: Record<Language, Translations> = {
       items: [
         {
           id: 'work-1',
-          title: 'Pintura Integral em Cabine Pressurizada',
+          title: 'Pintura Personalizada em Cabine Pressurizada',
           category: 'paint',
-          processTag: 'Pintura Automóvel · Aplicação de Verniz',
+          processTag: 'Pintura Automóvel · Material Certificado SIKKENS',
           description:
-            'Aplicação uniforme de verniz cerâmico de alto brilho com controlo de temperatura e filtragem de partículas.',
-          alt: 'Pintor automóvel profissional a aplicar verniz numa porta dentro da cabine de pintura',
+            'Aplicação uniforme de pintura e verniz SIKKENS de alto brilho com controlo de temperatura e filtragem de partículas.',
+          alt: 'Pintor automóvel Pedro Grazina a aplicar verniz SIKKENS numa porta dentro da cabine de pintura em Leiria',
           imageUrl: IMAGE_PATHS.paintBooth,
           aspectClass: 'aspect-[16/10]',
           spanClass: 'md:col-span-7',
         },
         {
           id: 'work-2',
-          title: 'Reparação de Guarda-Lamas & Preparação de Chapa',
+          title: 'Reparação de Sinistros & Preparação de Carroçaria',
           category: 'bodywork',
-          processTag: 'Carroçaria · Nivelamento e Primário',
+          processTag: 'Sinistros · Nivelamento e Primário',
           description:
-            'Recuperação estrutural e modelação de painel traseiro com transição perfeita entre chapa viva e aparelho.',
-          alt: 'Detalhe de reparação de carroçaria e preparação de chapa num painel traseiro automóvel',
+            'Recuperação de painel após sinistro com modelação rigorosa de chapa e aplicação de aparelho de alta densidade.',
+          alt: 'Detalhe de reparação de sinistro e preparação de chapa num painel traseiro automóvel',
           imageUrl: IMAGE_PATHS.bodywork,
           aspectClass: 'aspect-[4/3]',
           spanClass: 'md:col-span-5',
         },
         {
           id: 'work-3',
-          title: 'Polimento Técnico & Correção de Brilho',
+          title: 'Polimentos Gerais & Correção de Brilho',
           category: 'polish',
-          processTag: 'Polimento · Acabamento Espelhado',
+          processTag: 'Polimento Geral · Acabamento Espelhado',
           description:
-            'Refinamento multicamada da superfície pintada para eliminar micro-imperfeições e garantir reflexo cristalino.',
-          alt: 'Técnico a realizar polimento profissional num capô pintado em cinza antracite metálico',
+            'Polimento técnico multicamada para eliminar micro-imperfeições e devolver profundidade ótica à pintura.',
+          alt: 'Técnico a realizar polimento geral profissional num capô pintado em cinza antracite metálico',
           imageUrl: IMAGE_PATHS.polishing,
           aspectClass: 'aspect-[4/3]',
           spanClass: 'md:col-span-5',
         },
         {
           id: 'work-4',
-          title: 'Repintura Completa Cinza Grafite Metálico',
+          title: 'Pintura Integral Cinza Grafite Metálico',
           category: 'paint',
-          processTag: 'Resultado Final · Viatura Concluída',
+          processTag: 'Resultado Final · Acabamento SIKKENS',
           description:
-            'Acabamento final com correspondência exata de tonalidade metálica, alinhamento de folgas e profundidade de cor.',
-          alt: 'Desportivo pintado em cinza grafite metálico com acabamento brilhante em estúdio',
+            'Acabamento final com correspondência exata de tonalidade metálica, alinhamento de folgas e profundidade de verniz.',
+          alt: 'Desportivo pintado em cinza grafite metálico com acabamento brilhante na oficina em Leiria',
           imageUrl: IMAGE_PATHS.finishedCoupe,
           aspectClass: 'aspect-[16/10]',
           spanClass: 'md:col-span-7',
         },
         {
           id: 'work-5',
-          title: 'BMW E30 Rally — Pintura Integral de Carroçaria & Rollbar',
+          title: 'BMW E30 Rally — Pintura Personalizada de Carroçaria & Rollbar',
           category: 'paint',
-          processTag: 'Projeto Completo · Chapa, Rollbar & Pintura Vermelha',
+          processTag: 'Projeto Completo · Chapa, Rollbar & Pintura SIKKENS',
           description:
             'Preparação integral de carroçaria, pintura de estrutura tubular interior em preto brilhante e acabamento exterior em vermelho de alto brilho.',
-          alt: 'BMW E30 Rally com pintura vermelha de alto brilho e rollbar preto em estúdio Pedro Grazina',
+          alt: 'BMW E30 Rally com pintura vermelha de alto brilho e rollbar preto por Pedro Grazina em Leiria',
           imageUrl: IMAGE_PATHS.e30Contour,
           aspectClass: 'aspect-[21/9]',
           spanClass: 'md:col-span-12',
@@ -318,37 +330,41 @@ export const translations: Record<Language, Translations> = {
       ],
     },
     quote: {
-      kicker: 'ORÇAMENTO & CONTACTO DIRETO',
+      kicker: 'ORÇAMENTO & CONTACTO DIRETO — LEIRIA',
       title: 'Precisa de renovar a pintura da sua viatura?',
       subtitle:
-        'Envie-nos os detalhes do seu pedido e entre em contacto connosco para obter um orçamento.',
-      directContactTitle: 'Contacto Direto',
+        'Envie-nos os detalhes do seu pedido ou visite-nos na Zona Industrial da Zicofa, em Leiria, para obter um orçamento.',
+      directContactTitle: 'Contacto Direto & Localização',
       directContactSubtitle:
-        'Prefere falar connosco de imediato? Envie fotografias dos danos por WhatsApp ou ligue diretamente para uma avaliação rápida.',
+        'Prefere falar connosco de imediato? Envie fotografias por WhatsApp, ligue diretamente ou visite a nossa oficina em Leiria.',
       whatsappCta: 'Conversar no WhatsApp',
       whatsappDirectNote: 'Resposta rápida · Pode enviar fotografias da viatura',
       phoneLabel: 'Telefone / Telemóvel',
-      emailLabel: 'Email Profissional',
-      scheduleLabel: 'Atendimento',
-      scheduleValue: 'Segunda a Sexta · 08:30 – 18:30 | Sábado por marcação',
+      emailLabel: 'Email',
+      addressLabel: 'Morada da Oficina',
+      addressValue: 'Rua Outeiro da Rosa nº 11 (Zn Industrial da Zicofa), Leiria, Portugal',
+      directionsLabel: 'Ver no Google Maps',
+      scheduleLabel: 'Horário de Funcionamento',
+      scheduleValue: 'Segunda a Sexta-feira: 09:00 – 18:00',
+      scheduleWeekend: 'Sábado e Domingo: Encerrado',
       form: {
         nameLabel: 'Nome',
         namePlaceholder: 'O seu nome completo',
         phoneLabel: 'Telefone',
-        phonePlaceholder: '+351 912 345 678',
+        phonePlaceholder: '+351 911 044 842',
         emailLabel: 'Email',
         emailPlaceholder: 'oseuemail@exemplo.pt',
         serviceLabel: 'Tipo de Serviço (Opcional)',
         serviceOptions: {
-          fullPaint: 'Pintura Automóvel (Completa ou Parcial)',
-          bodyRepair: 'Reparação de Carroçaria / Amolgadelas',
-          partsPaint: 'Pintura de Peças (Para-choques, Capô, Portas)',
-          polishing: 'Polimento e Acabamento',
-          other: 'Outro pedido / Avaliação geral',
+          customPaint: 'Pintura Personalizada / Pintura Automóvel',
+          crashRepair: 'Reparações de Sinistros / Carroçaria',
+          polishing: 'Polimentos Gerais',
+          headlights: 'Recuperação de Faróis (Garantia 2 Anos) / Afinação',
+          other: 'Outro pedido / Orçamento geral',
         },
         messageLabel: 'Mensagem',
         messagePlaceholder:
-          'Descreva a marca/modelo da viatura e as peças ou danos que pretende reparar ou pintar...',
+          'Descreva a marca/modelo da viatura e o serviço pretendido (pintura, reparação de sinistro, polimento ou faróis)...',
         submitButton: 'Pedir Orçamento',
         submittingButton: 'A enviar pedido...',
         responseGuarantee:
@@ -379,11 +395,11 @@ export const translations: Record<Language, Translations> = {
       instagramLabel: 'Instagram',
       emailLabel: 'Enviar Email',
       prefilledWhatsappText:
-        'Olá Pedro Grazina, gostaria de pedir um orçamento de pintura / reparação automóvel.',
+        'Olá Pedro Grazina, gostaria de pedir um orçamento de pintura automóvel / reparação.',
     },
     footer: {
       tagline:
-        'Especialistas em pintura automóvel, reparação de carroçarias e acabamento de precisão.',
+        'Reparações de sinistros, pintura personalizada, polimentos gerais e recuperação de faróis com material certificado SIKKENS em Leiria.',
       navigationTitle: 'Navegação',
       contactsTitle: 'Contactos',
       socialTitle: 'Redes Sociais',
@@ -393,9 +409,9 @@ export const translations: Record<Language, Translations> = {
 
   en: {
     meta: {
-      title: 'Pedro Grazina — Automotive Paint & Bodywork Repair',
+      title: 'Pedro Grazina — Automotive Paint & Accident Repair in Leiria',
       description:
-        'Professional automotive painting, bodywork repair, parts refinishing, and precision polishing with meticulous attention to detail.',
+        'Automotive paint shop in Leiria (Zicofa), Portugal. Accident repairs, custom paintwork, full polishing, and headlight restoration (2-year warranty) with certified SIKKENS materials.',
     },
     nav: {
       services: 'Services',
@@ -410,59 +426,59 @@ export const translations: Record<Language, Translations> = {
       languageLabel: 'Select language',
     },
     hero: {
-      kicker: 'AUTOMOTIVE PAINTWORK · BODYSHOP SPECIALISTS',
+      kicker: 'LEIRIA · CUSTOM PAINTWORK & ACCIDENT REPAIR',
       title: 'We bring new life to your vehicle.',
       subtitle:
-        'Professional automotive painting and bodywork repair delivered with factory-grade finish and meticulous attention to detail.',
+        'Custom automotive painting, accident bodywork repair, general polishing, and headlight restoration using certified high-quality SIKKENS materials.',
       ctaPrimary: 'Request a Quote',
       ctaSecondary: 'View Our Work',
       trustPillars: {
-        quality: 'Precision color matching',
-        precision: 'Pressurized spray booth',
-        finish: 'Factory-grade finish & durability',
+        quality: 'Certified SIKKENS materials',
+        precision: 'Headlight restoration (2-year warranty)',
+        finish: 'Accident repair & custom paintwork',
       },
     },
     services: {
-      kicker: 'CORE CAPABILITIES',
+      kicker: 'CERTIFIED SIKKENS QUALITY MATERIALS',
       title: 'Our services',
       subtitle:
-        'High-precision paintwork and body repair executed with durable OEM-grade coatings and strict quality control at every stage.',
+        'High-precision paintwork and collision repair executed with certified SIKKENS coatings for lasting durability, gloss, and color accuracy.',
       items: [
         {
-          id: 'pintura-automovel',
+          id: 'pintura-personalizada',
           number: '01',
-          title: 'Automotive Painting',
+          title: 'Custom & Full Painting',
           description:
-            'Full or partial resprays with a flawless professional finish and exact color matching.',
-          details: 'Climate-controlled booth · High-solid clear coats',
+            'Full, partial, or bespoke automotive paintwork with a flawless professional finish and exact color matching.',
+          details: 'Certified SIKKENS materials · Pressurized booth',
           iconType: 'spray',
         },
         {
-          id: 'reparacao-carrocaria',
+          id: 'reparacoes-sinistros',
           number: '02',
-          title: 'Bodywork Repair',
+          title: 'Accident & Collision Repair',
           description:
-            'Expert repair of collision damage, dents, creases, and structural body panels.',
-          details: 'Panel alignment · Precision surface leveling',
+            'Complete recovery of collision damage, dents, and precision panel alignment for all vehicle makes.',
+          details: 'Multi-brand collision repair · Structural precision',
           iconType: 'bodywork',
         },
         {
-          id: 'pintura-pecas',
+          id: 'polimentos-gerais',
           number: '03',
-          title: 'Parts Painting',
+          title: 'General Polishing',
           description:
-            'Dedicated refinishing for bumpers, doors, hoods, fenders, mirrors, and trim components.',
-          details: 'Plastics, aluminum & steel · OEM texture matching',
-          iconType: 'parts',
+            'Full clear-coat treatment and machine refinement to remove surface swirls and restore deep mirror gloss.',
+          details: 'Gloss restoration · Deep optical clarity',
+          iconType: 'polish',
         },
         {
-          id: 'polimento-acabamento',
+          id: 'recuperacao-afinacao-farois',
           number: '04',
-          title: 'Polishing & Finishing',
+          title: 'Headlight Restoration & Alignment',
           description:
-            'Multi-stage paint treatment and refinement to restore deep gloss and optical clarity.',
-          details: 'Clear coat correction · Deep mirror reflection',
-          iconType: 'polish',
+            'Complete optical clarity restoration and precision beam alignment for road safety and vehicle inspection.',
+          details: 'Headlight restoration with a 2-year warranty',
+          iconType: 'headlights',
         },
       ],
     },
@@ -470,11 +486,11 @@ export const translations: Record<Language, Translations> = {
       kicker: 'PORTFOLIO & CRAFTSMANSHIP',
       title: 'Our work speaks for itself.',
       subtitle:
-        'From bare-metal panel preparation to pressurized booth clear-coating and final machine polishing. Every vehicle receives uncompromising care.',
+        'From collision bodywork preparation to bespoke SIKKENS booth resprays and final machine polishing in our Leiria workshop.',
       filterAll: 'All Projects',
       filterPaint: 'Paint & Booth',
-      filterBodywork: 'Bodywork',
-      filterPolish: 'Finishing & Detail',
+      filterBodywork: 'Accident & Bodywork',
+      filterPolish: 'Polishing & Detail',
       viewLarger: 'Inspect detail',
       closeLightbox: 'Close preview',
       previousImage: 'Previous image',
@@ -482,36 +498,36 @@ export const translations: Record<Language, Translations> = {
       items: [
         {
           id: 'work-1',
-          title: 'Full Booth Respray & Clear Coat Application',
+          title: 'Custom Respray in Pressurized Booth',
           category: 'paint',
-          processTag: 'Automotive Paint · Booth Application',
+          processTag: 'Automotive Paint · Certified SIKKENS Materials',
           description:
-            'Uniform high-gloss ceramic clear coat application under controlled temperature and particle filtration.',
-          alt: 'Professional automotive painter spraying clear coat onto a car door inside a pressurized paint booth',
+            'Uniform high-gloss SIKKENS clear coat application under controlled temperature and particle filtration.',
+          alt: 'Pedro Grazina spraying SIKKENS clear coat onto a car door inside a pressurized paint booth in Leiria',
           imageUrl: IMAGE_PATHS.paintBooth,
           aspectClass: 'aspect-[16/10]',
           spanClass: 'md:col-span-7',
         },
         {
           id: 'work-2',
-          title: 'Rear Quarter Panel Shaping & Primer Surfacer',
+          title: 'Collision Repair & Panel Preparation',
           category: 'bodywork',
-          processTag: 'Bodywork · Metal Leveling & Primer',
+          processTag: 'Accident Repair · Metal Leveling & Primer',
           description:
-            'Structural panel restoration and contour shaping with seamless transition from brushed metal to matte primer.',
-          alt: 'Close-up of precision bodywork repair and metal preparation on a rear quarter panel',
+            'Structural panel restoration and contour shaping with seamless transition from brushed metal to high-build primer.',
+          alt: 'Close-up of precision collision bodywork repair and metal preparation on a rear quarter panel',
           imageUrl: IMAGE_PATHS.bodywork,
           aspectClass: 'aspect-[4/3]',
           spanClass: 'md:col-span-5',
         },
         {
           id: 'work-3',
-          title: 'Multi-Stage Machine Polishing & Gloss Correction',
+          title: 'General Machine Polishing & Gloss Correction',
           category: 'polish',
-          processTag: 'Polishing · Mirror Finish',
+          processTag: 'General Polishing · Mirror Finish',
           description:
-            'Fine rotary and dual-action refinement on freshly cured paintwork to eliminate micro-defects and maximize gloss.',
-          alt: 'Technician machine polishing a freshly painted metallic anthracite hood',
+            'Multi-stage machine refinement on paintwork to eliminate surface defects and maximize gloss.',
+          alt: 'Technician performing general machine polishing on a metallic anthracite hood',
           imageUrl: IMAGE_PATHS.polishing,
           aspectClass: 'aspect-[4/3]',
           spanClass: 'md:col-span-5',
@@ -520,22 +536,22 @@ export const translations: Record<Language, Translations> = {
           id: 'work-4',
           title: 'Complete Metallic Graphite Grey Refinish',
           category: 'paint',
-          processTag: 'Completed Vehicle · Final Inspection',
+          processTag: 'Completed Vehicle · SIKKENS Finish',
           description:
             'Finished result featuring exact metallic flake alignment, crisp body lines, and wet-look clear coat depth.',
-          alt: 'Sports coupe finished in deep metallic graphite grey inside an inspection studio',
+          alt: 'Sports coupe finished in deep metallic graphite grey inside our Leiria workshop',
           imageUrl: IMAGE_PATHS.finishedCoupe,
           aspectClass: 'aspect-[16/10]',
           spanClass: 'md:col-span-7',
         },
         {
           id: 'work-5',
-          title: 'BMW E30 Rally — Full Shell & Roll Cage Refinish',
+          title: 'BMW E30 Rally — Custom Shell & Roll Cage Refinish',
           category: 'paint',
-          processTag: 'Complete Build · Body Shell, Roll Cage & Crimson Finish',
+          processTag: 'Complete Build · Body Shell, Roll Cage & SIKKENS Finish',
           description:
-            'Full bare-shell preparation, gloss black tubular roll cage painting, and high-gloss crimson exterior finish under studio inspection.',
-          alt: 'BMW E30 Rally finished in high-gloss crimson red with gloss black roll cage in studio',
+            'Full bare-shell preparation, gloss black tubular roll cage painting, and high-gloss crimson exterior finish.',
+          alt: 'BMW E30 Rally finished in high-gloss crimson red with gloss black roll cage by Pedro Grazina',
           imageUrl: IMAGE_PATHS.e30Contour,
           aspectClass: 'aspect-[21/9]',
           spanClass: 'md:col-span-12',
@@ -543,37 +559,41 @@ export const translations: Record<Language, Translations> = {
       ],
     },
     quote: {
-      kicker: 'ESTIMATE & DIRECT CONTACT',
+      kicker: 'ESTIMATE & DIRECT CONTACT — LEIRIA',
       title: 'Need to restore your vehicle’s paintwork?',
       subtitle:
-        'Send us the details of your request and get in touch with us for a personalized quote.',
-      directContactTitle: 'Direct Contact',
+        'Send us the details of your request or visit our workshop in Zona Industrial da Zicofa, Leiria, for a personalized quote.',
+      directContactTitle: 'Direct Contact & Location',
       directContactSubtitle:
-        'Prefer to speak with us right away? Send photos of the damage via WhatsApp or call us directly for a fast assessment.',
+        'Prefer to speak with us right away? Send photos via WhatsApp, call us directly, or visit our workshop in Leiria.',
       whatsappCta: 'Chat on WhatsApp',
       whatsappDirectNote: 'Fast reply · Feel free to send photos of your vehicle',
       phoneLabel: 'Phone / Mobile',
-      emailLabel: 'Business Email',
-      scheduleLabel: 'Working Hours',
-      scheduleValue: 'Monday to Friday · 08:30 – 18:30 | Saturday by appointment',
+      emailLabel: 'Email',
+      addressLabel: 'Workshop Address',
+      addressValue: 'Rua Outeiro da Rosa nº 11 (Zn Industrial da Zicofa), Leiria, Portugal',
+      directionsLabel: 'Open in Google Maps',
+      scheduleLabel: 'Opening Hours',
+      scheduleValue: 'Monday to Friday: 09:00 – 18:00',
+      scheduleWeekend: 'Saturday & Sunday: Closed',
       form: {
         nameLabel: 'Name',
         namePlaceholder: 'Your full name',
         phoneLabel: 'Phone',
-        phonePlaceholder: '+351 912 345 678',
+        phonePlaceholder: '+351 911 044 842',
         emailLabel: 'Email',
         emailPlaceholder: 'youremail@example.com',
         serviceLabel: 'Service Needed (Optional)',
         serviceOptions: {
-          fullPaint: 'Automotive Painting (Full or Partial)',
-          bodyRepair: 'Bodywork & Dent Repair',
-          partsPaint: 'Parts Painting (Bumpers, Hood, Doors)',
-          polishing: 'Polishing & Paint Refinement',
-          other: 'Other request / General assessment',
+          customPaint: 'Custom Painting / Full or Partial Respray',
+          crashRepair: 'Accident & Collision Repair',
+          polishing: 'General Polishing',
+          headlights: 'Headlight Restoration (2-Year Warranty) & Alignment',
+          other: 'Other request / General estimate',
         },
         messageLabel: 'Message',
         messagePlaceholder:
-          'Describe your vehicle make/model and the panels or damage you would like repaired or painted...',
+          'Describe your vehicle make/model and the service needed (custom paint, accident repair, polishing, or headlights)...',
         submitButton: 'Request a Quote',
         submittingButton: 'Sending request...',
         responseGuarantee:
@@ -607,7 +627,7 @@ export const translations: Record<Language, Translations> = {
     },
     footer: {
       tagline:
-        'Specialists in automotive painting, bodywork repair, and precision finishing.',
+        'Accident repairs, custom paintwork, general polishing, and headlight restoration with certified SIKKENS materials in Leiria.',
       navigationTitle: 'Navigation',
       contactsTitle: 'Contact',
       socialTitle: 'Social',
@@ -617,9 +637,9 @@ export const translations: Record<Language, Translations> = {
 
   fr: {
     meta: {
-      title: 'Pedro Grazina — Peinture Automobile & Réparation de Carrosserie',
+      title: 'Pedro Grazina — Peinture Automobile & Sinistres à Leiria',
       description:
-        'Atelier spécialisé en peinture automobile, réparation de carrosserie, peinture de pièces et polissage professionnel avec le souci du détail.',
+        'Atelier à Leiria (Zicofa), Portugal spécialisé en peinture personnalisée, réparation de sinistres, polissage général et rénovation de phares (garantie 2 ans) avec produits certifiés SIKKENS.',
     },
     nav: {
       services: 'Services',
@@ -634,59 +654,59 @@ export const translations: Record<Language, Translations> = {
       languageLabel: 'Choisir la langue',
     },
     hero: {
-      kicker: 'PEINTURE AUTOMOBILE · RÉPARATION DE CARROSSERIE',
+      kicker: 'LEIRIA · PEINTURE PERSONNALISÉE & RÉPARATION DE SINISTRES',
       title: 'Nous redonnons vie à votre véhicule.',
       subtitle:
-        'Peinture automobile et réparation de carrosserie avec une finition professionnelle et un souci absolu du détail.',
+        'Peinture personnalisée, réparation de sinistres, polissage général et rénovation de phares avec finition professionnelle et produits certifiés SIKKENS.',
       ctaPrimary: 'Demander un Devis',
       ctaSecondary: 'Voir nos Réalisations',
       trustPillars: {
-        quality: 'Colorimétrie de haute précision',
-        precision: 'Cabine de peinture pressurisée',
-        finish: 'Finition d’origine et haute durabilité',
+        quality: 'Produits certifiés SIKKENS',
+        precision: 'Rénovation de phares (Garantie 2 ans)',
+        finish: 'Réparation de sinistres & peinture sur mesure',
       },
     },
     services: {
-      kicker: 'SAVOIR-FAIRE TECHNIQUE',
+      kicker: 'MATÉRIAUX CERTIFIÉS SIKKENS DE HAUTE QUALITÉ',
       title: 'Nos services',
       subtitle:
-        'Interventions de haute précision en peinture et tôlerie, réalisées avec des matériaux durables et un contrôle rigoureux à chaque étape.',
+        'Interventions rigoureuses avec des matériaux certifiés SIKKENS de première qualité, garantissant durabilité, brillance et précision.',
       items: [
         {
-          id: 'pintura-automovel',
+          id: 'pintura-personalizada',
           number: '01',
-          title: 'Peinture Automobile',
+          title: 'Peinture Personnalisée',
           description:
-            'Peinture complète ou partielle avec finition professionnelle et correspondance exacte des teintes.',
-          details: 'Cabine climatisée · Vernis hauts solides',
+            'Peinture automobile complète, partielle ou personnalisée avec finition professionnelle et correspondance exacte des teintes.',
+          details: 'Matériaux certifiés SIKKENS · Cabine pressurisée',
           iconType: 'spray',
         },
         {
-          id: 'reparacao-carrocaria',
+          id: 'reparacoes-sinistros',
           number: '02',
-          title: 'Réparation de Carrosserie',
+          title: 'Réparations de Sinistres',
           description:
-            'Réparation des dommages, bosses, impacts et éléments structurels de carrosserie.',
-          details: 'Alignement des panneaux · Dressage de précision',
+            'Remise en état complète après accident, débosselage et alignement précis des éléments de carrosserie.',
+          details: 'Réparation multimarque · Rigueur structurelle',
           iconType: 'bodywork',
         },
         {
-          id: 'pintura-pecas',
+          id: 'polimentos-gerais',
           number: '03',
-          title: 'Peinture de Pièces',
+          title: 'Polissages Généraux',
           description:
-            'Peinture de pare-chocs, portières, capots, ailes, rétroviseurs et autres composants.',
-          details: 'Plastiques, aluminium et acier · Grain d’origine',
-          iconType: 'parts',
+            'Traitement complet et correction du vernis pour éliminer les micro-rayures et redonner un éclat miroir durable.',
+          details: 'Rénovation de brillance · Profondeur optique',
+          iconType: 'polish',
         },
         {
-          id: 'polimento-acabamento',
+          id: 'recuperacao-afinacao-farois',
           number: '04',
-          title: 'Polissage et Finition',
+          title: 'Rénovation et Réglage de Phares',
           description:
-            'Traitement et finition soignée pour redonner éclat, profondeur et qualité à la peinture.',
-          details: 'Correction du vernis · Brillance miroir durable',
-          iconType: 'polish',
+            'Restauration complète de la transparence des optiques et réglage précis du faisceau lumineux pour le contrôle technique.',
+          details: 'Rénovation de phares avec garantie de 2 ans',
+          iconType: 'headlights',
         },
       ],
     },
@@ -694,11 +714,11 @@ export const translations: Record<Language, Translations> = {
       kicker: 'PORTFOLIO & RÉALISATIONS',
       title: 'Notre travail parle de lui-même.',
       subtitle:
-        'De la préparation de la tôle à l’application du vernis en cabine pressurisée jusqu’au lustrage final. Chaque véhicule fait l’objet d’un soin méticuleux.',
+        'De la réparation de sinistres à l’application de peinture SIKKENS en cabine pressurisée jusqu’au polissage final dans notre atelier à Leiria.',
       filterAll: 'Toutes les Réalisations',
       filterPaint: 'Peinture & Cabine',
-      filterBodywork: 'Carrosserie',
-      filterPolish: 'Finition & Détail',
+      filterBodywork: 'Sinistres & Carrosserie',
+      filterPolish: 'Polissage & Détail',
       viewLarger: 'Voir en détail',
       closeLightbox: 'Fermer l’aperçu',
       previousImage: 'Image précédente',
@@ -706,23 +726,23 @@ export const translations: Record<Language, Translations> = {
       items: [
         {
           id: 'work-1',
-          title: 'Peinture Intégrale en Cabine Pressurisée',
+          title: 'Peinture Personnalisée en Cabine Pressurisée',
           category: 'paint',
-          processTag: 'Peinture Automobile · Application de Vernis',
+          processTag: 'Peinture Automobile · Produits Certifiés SIKKENS',
           description:
-            'Application homogène de vernis céramique haute brillance sous température contrôlée et filtration des particules.',
-          alt: 'Peintre automobile professionnel appliquant du vernis sur une portière en cabine',
+            'Application homogène de vernis SIKKENS haute brillance sous température contrôlée et filtration des particules.',
+          alt: 'Peintre automobile Pedro Grazina appliquant du vernis SIKKENS en cabine à Leiria',
           imageUrl: IMAGE_PATHS.paintBooth,
           aspectClass: 'aspect-[16/10]',
           spanClass: 'md:col-span-7',
         },
         {
           id: 'work-2',
-          title: 'Réparation d’Aile Arrière & Préparation Tôlerie',
+          title: 'Réparation de Sinistres & Préparation Tôlerie',
           category: 'bodywork',
-          processTag: 'Carrosserie · Dressage et Apprêt',
+          processTag: 'Sinistres · Dressage et Apprêt',
           description:
-            'Remise en forme du panneau arrière avec transition parfaite entre la tôle brossée et l’apprêt de finition.',
+            'Remise en forme du panneau arrière après sinistre avec transition parfaite entre la tôle brossée et l’apprêt.',
           alt: 'Gros plan sur une réparation de carrosserie et préparation de tôle sur une aile arrière',
           imageUrl: IMAGE_PATHS.bodywork,
           aspectClass: 'aspect-[4/3]',
@@ -730,12 +750,12 @@ export const translations: Record<Language, Translations> = {
         },
         {
           id: 'work-3',
-          title: 'Polissage Technique & Correction de Brillance',
+          title: 'Polissage Général & Correction de Brillance',
           category: 'polish',
-          processTag: 'Polissage · Finition Miroir',
+          processTag: 'Polissage Général · Finition Miroir',
           description:
-            'Affinage mécanique de la surface vernie pour éliminer les micro-défauts et obtenir une réflexion cristalline.',
-          alt: 'Technicien effectuant un polissage professionnel sur un capot gris anthracite métallisé',
+            'Affinage mécanique de la surface vernie pour éliminer les défauts et obtenir une réflexion cristalline.',
+          alt: 'Technicien effectuant un polissage général sur un capot gris anthracite métallisé',
           imageUrl: IMAGE_PATHS.polishing,
           aspectClass: 'aspect-[4/3]',
           spanClass: 'md:col-span-5',
@@ -744,10 +764,10 @@ export const translations: Record<Language, Translations> = {
           id: 'work-4',
           title: 'Peinture Complète Gris Graphite Métallisé',
           category: 'paint',
-          processTag: 'Véhicule Terminé · Contrôle Final',
+          processTag: 'Véhicule Terminé · Finition SIKKENS',
           description:
             'Résultat final avec correspondance exacte de la teinte métallisée, alignement précis et profondeur du vernis.',
-          alt: 'Coupé sportif peint en gris graphite métallisé avec finition brillante en atelier',
+          alt: 'Coupé sportif peint en gris graphite métallisé dans notre atelier à Leiria',
           imageUrl: IMAGE_PATHS.finishedCoupe,
           aspectClass: 'aspect-[16/10]',
           spanClass: 'md:col-span-7',
@@ -756,10 +776,10 @@ export const translations: Record<Language, Translations> = {
           id: 'work-5',
           title: 'BMW E30 Rally — Peinture Intégrale Caisse & Arceau',
           category: 'paint',
-          processTag: 'Projet Complet · Caisse, Arceau Noir & Rouge Brillant',
+          processTag: 'Projet Complet · Caisse, Arceau Noir & Finition SIKKENS',
           description:
             'Préparation complète de la caisse, peinture de l’arceau tubulaire en noir brillant et finition extérieure rouge haute brillance.',
-          alt: 'BMW E30 Rally avec peinture rouge haute brillance et arceau noir en atelier Pedro Grazina',
+          alt: 'BMW E30 Rally avec peinture rouge haute brillance et arceau noir par Pedro Grazina à Leiria',
           imageUrl: IMAGE_PATHS.e30Contour,
           aspectClass: 'aspect-[21/9]',
           spanClass: 'md:col-span-12',
@@ -767,39 +787,42 @@ export const translations: Record<Language, Translations> = {
       ],
     },
     quote: {
-      kicker: 'DEVIS & CONTACT DIRECT',
+      kicker: 'DEVIS & CONTACT DIRECT — LEIRIA',
       title: 'Besoin de rénover la peinture de votre véhicule ?',
       subtitle:
-        'Envoyez-nous les détails de votre demande et contactez-nous pour obtenir un devis personnalisé.',
-      directContactTitle: 'Contact Direct',
+        'Envoyez-nous les détails de votre demande ou rendez-nous visite dans la Zone Industrielle da Zicofa, à Leiria, pour obtenir un devis.',
+      directContactTitle: 'Contact Direct & Localisation',
       directContactSubtitle:
-        'Vous préférez nous parler immédiatement ? Envoyez des photos des dommages sur WhatsApp ou appelez-nous directement pour une évaluation rapide.',
+        'Vous préférez nous parler immédiatement ? Envoyez des photos sur WhatsApp, appelez-nous ou passez à notre atelier à Leiria.',
       whatsappCta: 'Discuter sur WhatsApp',
       whatsappDirectNote:
         'Réponse rapide · Vous pouvez envoyer des photos du véhicule',
       phoneLabel: 'Téléphone / Mobile',
-      emailLabel: 'Email Professionnel',
-      scheduleLabel: 'Horaires',
-      scheduleValue:
-        'Lundi au Vendredi · 08h30 – 18h30 | Samedi sur rendez-vous',
+      emailLabel: 'Email',
+      addressLabel: 'Adresse de l’Atelier',
+      addressValue: 'Rua Outeiro da Rosa nº 11 (Zn Industrial da Zicofa), Leiria, Portugal',
+      directionsLabel: 'Voir sur Google Maps',
+      scheduleLabel: 'Horaires d’Ouverture',
+      scheduleValue: 'Lundi au Vendredi : 09h00 – 18h00',
+      scheduleWeekend: 'Samedi et Dimanche : Fermé',
       form: {
         nameLabel: 'Nom',
         namePlaceholder: 'Votre nom complet',
         phoneLabel: 'Téléphone',
-        phonePlaceholder: '+351 912 345 678',
+        phonePlaceholder: '+351 911 044 842',
         emailLabel: 'Email',
         emailPlaceholder: 'votreemail@exemple.fr',
         serviceLabel: 'Service Souhaité (Optionnel)',
         serviceOptions: {
-          fullPaint: 'Peinture Automobile (Complète ou Partielle)',
-          bodyRepair: 'Réparation de Carrosserie / Débosselage',
-          partsPaint: 'Peinture de Pièces (Pare-chocs, Capot, Portières)',
-          polishing: 'Polissage et Finition',
-          other: 'Autre demande / Évaluation générale',
+          customPaint: 'Peinture Personnalisée / Peinture Automobile',
+          crashRepair: 'Réparations de Sinistres / Carrosserie',
+          polishing: 'Polissages Généraux',
+          headlights: 'Rénovation de Phares (Garantie 2 Ans) & Réglage',
+          other: 'Autre demande / Devis général',
         },
         messageLabel: 'Message',
         messagePlaceholder:
-          'Indiquez la marque/modèle du véhicule ainsi que les pièces ou dommages à réparer ou peindre...',
+          'Indiquez la marque/modèle du véhicule et la prestation souhaitée (peinture personnalisée, sinistre, polissage ou phares)...',
         submitButton: 'Demander un Devis',
         submittingButton: 'Envoi en cours...',
         responseGuarantee:
@@ -830,11 +853,11 @@ export const translations: Record<Language, Translations> = {
       instagramLabel: 'Instagram',
       emailLabel: 'Envoyer un Email',
       prefilledWhatsappText:
-        'Bonjour Pedro Grazina, je souhaiterais demander un devis pour une peinture / réparation de carrosserie.',
+        'Bonjour Pedro Grazina, je souhaiterais demander un devis pour une peinture / réparation automobile.',
     },
     footer: {
       tagline:
-        'Spécialistes en peinture automobile, réparation de carrosserie et finition de haute précision.',
+        'Réparations de sinistres, peinture personnalisée, polissages généraux et rénovation de phares avec produits certifiés SIKKENS à Leiria.',
       navigationTitle: 'Navigation',
       contactsTitle: 'Contacts',
       socialTitle: 'Réseaux Sociaux',
