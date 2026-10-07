@@ -1,4 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
+import framePainterBack from '../assets/images/hero_e30_painter_back_1791120439154.jpg';
+import frameSprayMacro from '../assets/images/hero_e30_spray_macro_1791120450842.jpg';
+import frameRollcageContour from '../assets/images/hero_e30_rollcage_contour_1791120462550.jpg';
 
 interface HeroBackgroundLoopProps {
   customVideoUrl?: string | null;
@@ -7,19 +10,19 @@ interface HeroBackgroundLoopProps {
 const KEYFRAMES = [
   {
     id: 'painter-back',
-    src: '/src/assets/images/hero_e30_painter_back_1791120439154.jpg',
+    src: framePainterBack,
     alt: 'Pedro Grazina (+351 911 044 842) spraying crimson red BMW E30 rally bodywork in a dark studio',
     animationClass: 'hero-motion-seq-1',
   },
   {
     id: 'spray-macro',
-    src: '/src/assets/images/hero_e30_spray_macro_1791120450842.jpg',
+    src: frameSprayMacro,
     alt: 'Close-up macro of HVLP spray gun applying fine clear-coat mist onto BMW E30 box-flared fender',
     animationClass: 'hero-motion-seq-2',
   },
   {
     id: 'rollcage-contour',
-    src: '/src/assets/images/hero_e30_rollcage_contour_1791120462550.jpg',
+    src: frameRollcageContour,
     alt: 'High-gloss crimson red BMW E30 coupe with gloss black tubular roll cage under linear studio lights',
     animationClass: 'hero-motion-seq-3',
   },
@@ -41,7 +44,7 @@ interface MistParticle {
 
 /**
  * Seamless atmospheric hero background.
- * Supports playing a real HTML5 <video> (.mp4 / .webm) placed at `/hero-video.mp4` or passed via `customVideoUrl`,
+ * Supports playing a real HTML5 <video> (.mp4 / .webm) placed at `public/hero-video.mp4` or passed via `customVideoUrl`,
  * with a fallback to the multi-plane BMW E30 Rally + interactive WebGL/Canvas physical paint-mist simulation.
  */
 export const HeroBackgroundLoop: React.FC<HeroBackgroundLoopProps> = ({
@@ -51,11 +54,11 @@ export const HeroBackgroundLoop: React.FC<HeroBackgroundLoopProps> = ({
   const [localVideoAvailable, setLocalVideoAvailable] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-  // Check if a static `/hero-video.mp4` file has been placed in `/public`
+  // Check if a static `hero-video.mp4` file has been placed in `/public`
   useEffect(() => {
     if (customVideoUrl) return;
     let cancelled = false;
-    fetch('/hero-video.mp4', { method: 'HEAD' })
+    fetch('./hero-video.mp4', { method: 'HEAD' })
       .then((res) => {
         if (!cancelled && res.ok && res.headers.get('content-type')?.includes('video')) {
           setLocalVideoAvailable(true);
@@ -106,7 +109,6 @@ export const HeroBackgroundLoop: React.FC<HeroBackgroundLoopProps> = ({
     const particles: MistParticle[] = [];
 
     const createParticle = (): MistParticle => {
-      // Originate primarily from the right half where the HVLP spray gun and BMW E30 are located
       const originX = width * (0.52 + Math.random() * 0.38);
       const originY = height * (0.35 + Math.random() * 0.45);
       const maxLife = 180 + Math.random() * 180;
@@ -132,7 +134,6 @@ export const HeroBackgroundLoop: React.FC<HeroBackgroundLoopProps> = ({
       time += 0.008;
       ctx.clearRect(0, 0, width, height);
 
-      // Subtle moving cold-white linear studio light reflection across the right side
       const beamX = width * (0.68 + Math.sin(time * 0.7) * 0.14);
       const beamGrad = ctx.createLinearGradient(
         beamX - 240,
@@ -147,7 +148,6 @@ export const HeroBackgroundLoop: React.FC<HeroBackgroundLoopProps> = ({
       ctx.fillStyle = beamGrad;
       ctx.fillRect(0, 0, width, height);
 
-      // Render volumetric fine HVLP clear-coat mist particles catching studio light
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
         p.life += 1;
@@ -199,7 +199,7 @@ export const HeroBackgroundLoop: React.FC<HeroBackgroundLoopProps> = ({
   }, [customVideoUrl, localVideoAvailable]);
 
   const activeVideoSrc =
-    customVideoUrl || (localVideoAvailable ? '/hero-video.mp4' : null);
+    customVideoUrl || (localVideoAvailable ? './hero-video.mp4' : null);
 
   if (activeVideoSrc) {
     return (

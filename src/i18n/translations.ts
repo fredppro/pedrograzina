@@ -136,13 +136,20 @@ export interface Translations {
   };
 }
 
+import heroImg from '../assets/images/hero_e30_painter_back_1791120439154.jpg';
+import e30ContourImg from '../assets/images/hero_e30_rollcage_contour_1791120462550.jpg';
+import paintBoothImg from '../assets/images/gallery_paint_booth_1791116986449.jpg';
+import bodyworkImg from '../assets/images/gallery_bodywork_repair_1791116998437.jpg';
+import polishingImg from '../assets/images/gallery_polishing_detail_1791117009608.jpg';
+import finishedCoupeImg from '../assets/images/gallery_finished_coupe_1791117021371.jpg';
+
 const IMAGE_PATHS = {
-  hero: '/src/assets/images/hero_e30_painter_back_1791120439154.jpg',
-  e30Contour: '/src/assets/images/hero_e30_rollcage_contour_1791120462550.jpg',
-  paintBooth: '/src/assets/images/gallery_paint_booth_1791116986449.jpg',
-  bodywork: '/src/assets/images/gallery_bodywork_repair_1791116998437.jpg',
-  polishing: '/src/assets/images/gallery_polishing_detail_1791117009608.jpg',
-  finishedCoupe: '/src/assets/images/gallery_finished_coupe_1791117021371.jpg',
+  hero: heroImg,
+  e30Contour: e30ContourImg,
+  paintBooth: paintBoothImg,
+  bodywork: bodyworkImg,
+  polishing: polishingImg,
+  finishedCoupe: finishedCoupeImg,
 };
 
 export const CONTACT_INFO = {
