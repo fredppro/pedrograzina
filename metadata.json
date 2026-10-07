@@ -1,0 +1,6 @@
+{
+  "name": "Pedro Grazina — Pintura Automóvel",
+  "description": "Oficina especializada em pintura automóvel, reparação de carroçarias, pintura de peças e polimento profissional com atenção ao detalhe.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
